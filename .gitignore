@@ -6,5 +6,5 @@ dist/
 *.local
 
 .deploy.sh
-
+.deploy.ps1
 

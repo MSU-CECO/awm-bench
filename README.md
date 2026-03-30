@@ -1,8 +1,9 @@
 # AWM-Bench Leaderboard
 
-A simple leaderboard for AI benchmarks in **Agricultural Water Management (AWM)**.
+A leaderboard for AI benchmarks in **Agricultural Water Management (AWM)**.
 
-**Live site:** `https://dsi-lab.gitlab.io/awm-bench/`
+**Live site:** https://dsiweb.cse.msu.edu/awm-bench/  
+**Repository:** https://gitlab.msu.edu/MSU-CECO/awm-bench
 
 ---
 
@@ -13,27 +14,53 @@ A simple leaderboard for AI benchmarks in **Agricultural Water Management (AWM)*
 | `agxqa` | Agricultural Extension QA | [P1 · CAEG 2024](https://doi.org/10.1016/j.compag.2024.109349) | Extractive QA |
 | `dew-logiq` | DEW — Logical Reasoning | [P2 · CAEG 2026](https://doi.org/10.1016/j.compag.2026.111533) | Multiple-Choice QA (Logic) |
 | `dew-mathq` | DEW — Mathematical Reasoning | P2 | Multiple-Choice QA (Math) |
-| `farmpro-q2s` | FarmPro Query-to-Structure | [P3 · CAEG 2026](https://doi.org/10.1016/j.compag.2026.111533) | Semantic Parsing |
+| `farmpro-q2s` | FarmPro Query-to-Structure | [P3 · CAEG 2026](https://doi.org/10.1016/j.compag.2026.111655) | Semantic Parsing |
 | `farmpro-qa` | FarmPro QA | P3 | Simulation-Grounded QA |
 
 ---
 
 ## Development
-
 ```bash
 npm install
 npm run dev        # http://localhost:5173
 npm run build      # dist/
-npm run preview    # preview production build
+```
+
+---
+
+## Deployment (IIS on Windows Server)
+
+The site is served as a virtual directory under the `dsiweb` IIS application at MSU.
+
+**Server path:** `C:\inetpub\wwwroot\dsiweb\paper_demos\awm-bench\dist`  
+**IIS virtual directory alias:** `awm-bench`
+
+### To deploy an update
+
+RDP into the server, then run:
+```powershell
+.\deploy.ps1
+```
+
+This pulls the latest code, installs dependencies, builds with the correct base path, and copies `web.config` into `dist/`.
+
+### Manual steps (already replicated in deploy.ps1)
+```cmd
+git pull
+cmd /C "set VITE_BASE_PATH=/awm-bench/ && npm run build"
+copy web.config dist\web.config
 ```
 
 ---
 
 ## Submitting Results
 
-1. **Fork** this repo.
-2. **Edit** `src/data/results.json` — add your model entry under the appropriate benchmark key:
+1. **Fork** this repo on GitLab
+2. **Edit** `src/data/results.json` to add your model entry under the appropriate benchmark key
+3. **Open a Merge Request** e.g., titled `[<benchmark>] <Model>: <brief description>`
+4. Link your paper or evaluation code for us to review before merging
 
+### Entry schema
 ```json
 {
   "rank": 1,
@@ -42,16 +69,13 @@ npm run preview    # preview production build
   "credibility": "community",
   "verified": false,
   "date": "2026",
-  "notes": "Brief description of the setup.",
+  "notes": "Brief description of the experimental setup.",
   "metrics": {
     "F1": 72.5,
     "EM": 48.3
   }
 }
 ```
-
-3. **Open a Merge Request** titled `[<benchmark>] <Model>: <brief description>`.
-4. Link your paper / evaluation code. Authors will review and merge.
 
 ### Credibility levels
 
@@ -60,37 +84,7 @@ npm run preview    # preview production build
 | `peer-reviewed` | Published journal or conference paper |
 | `preprint` | arXiv or similar preprint |
 | `report` | Technical report or workshop paper |
-| `community` | Self-reported (no paper required) |
-
----
-
-## Project structure
-
-```
-awm-bench/
-├── src/
-│   ├── data/
-│   │   ├── benchmarks.json    # benchmark metadata
-│   │   └── results.json       # all model scores (edit this to add results)
-│   ├── components/
-│   │   ├── TheHeader.vue
-│   │   ├── HeroSection.vue
-│   │   ├── BenchmarkTabs.vue
-│   │   ├── BenchmarkInfo.vue
-│   │   ├── LeaderboardTable.vue
-│   │   ├── ScoreBar.vue
-│   │   ├── ScoreCell.vue
-│   │   ├── SubmitInfo.vue
-│   │   └── TheFooter.vue
-│   ├── App.vue
-│   ├── main.js
-│   └── style.css
-├── index.html
-├── vite.config.js
-├── package.json
-├── .gitlab-ci.yml
-└── README.md
-```
+| `community` | Self-reported, no paper required |
 
 ---
 
@@ -125,4 +119,34 @@ If you use AWM-Bench benchmarks, please cite the relevant papers:
   year    = {2026},
   doi     = {10.1016/j.compag.2026.111655},
 }
+```
+
+---
+
+## Project structure
+```
+awm-bench/
+├── src/
+│   ├── data/
+│   │   ├── benchmarks.json    # benchmark metadata
+│   │   └── results.json       # all model scores
+│   ├── components/
+│   │   ├── TheHeader.vue
+│   │   ├── HeroSection.vue
+│   │   ├── BenchmarkTabs.vue
+│   │   ├── BenchmarkInfo.vue
+│   │   ├── LeaderboardTable.vue
+│   │   ├── ScoreBar.vue
+│   │   ├── ScoreCell.vue
+│   │   ├── SubmitInfo.vue
+│   │   └── TheFooter.vue
+│   ├── App.vue
+│   ├── main.js
+│   └── style.css
+├── index.html
+├── vite.config.js
+├── web.config          # IIS MIME type config
+├── deploy.ps1          # one-click deploy script
+├── package.json
+└── README.md
 ```
