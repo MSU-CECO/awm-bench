@@ -11,8 +11,7 @@
       </div>
       <div class="footer-right">
         <span class="footer-note">
-          Data sourced from peer-reviewed papers. Submit results via
-          <a href="https://gitlab.com/msu-ceco/awm-bench" target="_blank" rel="noopener">Merge Request</a>.
+          Data sourced from peer-reviewed papers.
         </span>
       </div>
     </div>
