@@ -1,0 +1,111 @@
+[
+  {
+    "id": "agxqa",
+    "label": "AgXQA",
+    "paper": "P1",
+    "full_name": "Agricultural Extension Question Answering",
+    "task": "Extractive QA",
+    "description": "SQuAD-style extractive QA over US agricultural irrigation documents. 2,186 context-question-answer pairs sourced from 716 paragraphs curated from land-grant Extension materials. Focus: irrigation scheduling, water quality, and crop water management.",
+    "size": "2,186 QA pairs",
+    "split": "test (330 pairs)",
+    "credibility": "peer-reviewed",
+    "venue": "Computers and Electronics in Agriculture",
+    "year": 2024,
+    "paper_url": "https://doi.org/10.1016/j.compag.2024.109349",
+    "hf_dataset": "https://huggingface.co/datasets/msu-ceco/agxqa_v1",
+    "primary_metric": "F1",
+    "metrics": [
+      { "key": "EM",        "label": "EM (%)",       "type": "percent",  "higher_better": true },
+      { "key": "F1",        "label": "F1 (%)",        "type": "percent",  "higher_better": true },
+      { "key": "BLEU",      "label": "BLEU (%)",      "type": "percent",  "higher_better": true },
+      { "key": "BERTScore", "label": "BERTScore",     "type": "decimal",  "higher_better": true },
+      { "key": "ROUGE1",    "label": "ROUGE-1",       "type": "decimal",  "higher_better": true },
+      { "key": "ROUGE2",    "label": "ROUGE-2",       "type": "decimal",  "higher_better": true },
+      { "key": "ROUGEL",    "label": "ROUGE-L",       "type": "decimal",  "higher_better": true }
+    ]
+  },
+  {
+    "id": "dew-logiq",
+    "label": "DEW-LogiQ",
+    "paper": "P2",
+    "full_name": "Dataset for Evaluating Water-management (Logical Reasoning)",
+    "task": "Multiple-Choice QA (Logical Reasoning)",
+    "description": "Multiple-choice benchmark for logical reasoning across 7 AWM domains: policy & regulations, irrigation technology, economic considerations, types of irrigation systems, climate change resilience, irrigation scheduling, and water quality. Questions derived from the AgXQA corpus via a knowledge-graph (DEW-KG) pipeline.",
+    "size": "358 questions · 7 domains",
+    "split": "full test set",
+    "credibility": "peer-reviewed",
+    "venue": "Computers and Electronics in Agriculture",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1016/j.compag.2026.111533",
+    "hf_dataset": "https://huggingface.co/datasets/msu-ceco/dew-logiq",
+    "primary_metric": "FLOW_Map",
+    "metrics": [
+      { "key": "CoT",       "label": "CoT Baseline (%)",  "type": "percent", "higher_better": true },
+      { "key": "FLOW_Map",  "label": "FLOW-Map (%)",      "type": "percent", "higher_better": true }
+    ]
+  },
+  {
+    "id": "dew-mathq",
+    "label": "DEW-MathQ",
+    "paper": "P2",
+    "full_name": "Dataset for Evaluating Water-management (Mathematical Reasoning)",
+    "task": "Multiple-Choice QA (Mathematical Reasoning)",
+    "description": "Multiple-choice benchmark for mathematical reasoning across 17 AWM domains. Covers plant water use, irrigation scheduling, salinity management, pump hydraulics, and more.",
+    "size": "61 questions · 17 domains",
+    "split": "full test set",
+    "credibility": "peer-reviewed",
+    "venue": "Computers and Electronics in Agriculture",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1016/j.compag.2026.111533",
+    "hf_dataset": "https://huggingface.co/datasets/msu-ceco/dew-mathq-ncb",
+    "primary_metric": "FLOW_Eq",
+    "metrics": [
+      { "key": "CoT",      "label": "CoT Baseline (%)", "type": "percent", "higher_better": true },
+      { "key": "ToT",      "label": "ToT Baseline (%)", "type": "percent", "higher_better": true },
+      { "key": "FLOW_Path","label": "FLOW-Path (%)",    "type": "percent", "higher_better": true },
+      { "key": "FLOW_Eq",  "label": "FLOW-Eq (%)",      "type": "percent", "higher_better": true }
+    ]
+  },
+  {
+    "id": "farmpro-q2s",
+    "label": "FarmPro-Q2S",
+    "paper": "P3",
+    "full_name": "Farm Profile Query-to-Structure",
+    "task": "Semantic Parsing (NL → JSON)",
+    "description": "Semantic parsing benchmark: transform natural-language farm-profile queries into structured JSON records for DSSAT crop simulation. Three cases across 16 variation templates: CLI (climatological), BIO (biological / crop genotype-ecotype), PHY (physiographical / soil).",
+    "size": "1,800 queries · 3 case types",
+    "split": "full set (600 per case)",
+    "credibility": "peer-reviewed",
+    "venue": "Computers and Electronics in Agriculture",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1016/j.compag.2026.111655",
+    "hf_dataset": "https://huggingface.co/datasets/msu-ceco/farmpro-q2s-1800",
+    "primary_metric": "BLEU",
+    "metrics": [
+      { "key": "BERTScore","label": "BERTScore-F1",  "type": "decimal", "higher_better": true },
+      { "key": "ROUGEL",   "label": "ROUGE-L",       "type": "decimal", "higher_better": true },
+      { "key": "BLEU",     "label": "BLEU (%)",       "type": "percent", "higher_better": true }
+    ]
+  },
+  {
+    "id": "farmpro-qa",
+    "label": "FarmPro-QA",
+    "paper": "P3",
+    "full_name": "Farm Profile Question Answering",
+    "task": "End-to-End Simulation-Grounded QA",
+    "description": "End-to-end QA benchmark: answer farmer questions by orchestrating DSSAT crop simulations. 600 context-question-answer triplets, evaluated by three domain-expert judges on relevance, completeness, and clarity (1-3 scale). Covers drainage, crop maturity, fertilizer applications, and more.",
+    "size": "600 QA triplets",
+    "split": "test (158 expert interactions)",
+    "credibility": "peer-reviewed",
+    "venue": "Computers and Electronics in Agriculture",
+    "year": 2026,
+    "paper_url": "https://doi.org/10.1016/j.compag.2026.111655",
+    "hf_dataset": "https://huggingface.co/datasets/msu-ceco/farmpro-qa-600",
+    "primary_metric": "Effectiveness",
+    "metrics": [
+      { "key": "Alignment",    "label": "Alignment (%)",     "type": "percent", "higher_better": true },
+      { "key": "Effectiveness","label": "Effectiveness (%)",  "type": "percent", "higher_better": true },
+      { "key": "EffScore",     "label": "Avg Score (1-3)",    "type": "decimal", "higher_better": true }
+    ]
+  }
+]

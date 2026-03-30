@@ -1,0 +1,237 @@
+{
+  "agxqa": [
+    {
+      "rank": 1,
+      "model": "AgRoBERTa (PEFT · Pfeiffer, pretrained)",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Domain-specific encoder pretrained on AEC corpus, fine-tuned with pretrained Pfeiffer bottleneck adapter (SQuAD1 init). Best overall configuration.",
+      "metrics": {
+        "EM": 55.15, "F1": 78.89, "BLEU": 52.42,
+        "BERTScore": 0.87, "ROUGE1": 0.79, "ROUGE2": 0.68, "ROUGEL": 0.79
+      }
+    },
+    {
+      "rank": 2,
+      "model": "AgRoBERTa (PEFT · Houlsby, pretrained)",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Same pretrained corpus; Houlsby bottleneck adapter architecture (SQuAD1 init).",
+      "metrics": {
+        "EM": 53.64, "F1": 78.34, "BLEU": null,
+        "BERTScore": null, "ROUGE1": null, "ROUGE2": null, "ROUGEL": null
+      }
+    },
+    {
+      "rank": 3,
+      "model": "AgRoBERTa (Full Fine-Tuning)",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Traditional pre-training (MLM) + full fine-tuning on AgXQA train set.",
+      "metrics": {
+        "EM": 45.45, "F1": 71.69, "BLEU": null,
+        "BERTScore": null, "ROUGE1": null, "ROUGE2": null, "ROUGEL": null
+      }
+    },
+    {
+      "rank": 4,
+      "model": "AgRoBERTa (PEFT · Houlsby)",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Houlsby adapter without SQuAD pre-training.",
+      "metrics": {
+        "EM": 42.42, "F1": 70.22, "BLEU": null,
+        "BERTScore": null, "ROUGE1": null, "ROUGE2": null, "ROUGEL": null
+      }
+    },
+    {
+      "rank": 5,
+      "model": "AgRoBERTa (Simple Fine-Tuning)",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Direct QA fine-tuning without MLM pre-training step.",
+      "metrics": {
+        "EM": 40.60, "F1": 68.74, "BLEU": null,
+        "BERTScore": null, "ROUGE1": null, "ROUGE2": null, "ROUGEL": null
+      }
+    },
+    {
+      "rank": 6,
+      "model": "AgRoBERTa (PEFT · Pfeiffer)",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Pfeiffer bottleneck adapter without SQuAD pre-training.",
+      "metrics": {
+        "EM": 40.00, "F1": 69.32, "BLEU": null,
+        "BERTScore": null, "ROUGE1": null, "ROUGE2": null, "ROUGEL": null
+      }
+    },
+    {
+      "rank": 7,
+      "model": "GPT-3.5",
+      "model_url": "https://doi.org/10.1016/j.compag.2024.109349",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2024",
+      "notes": "Zero-shot learning (ZSL): no fine-tuning. Evaluated with QA metrics (EM/F1) and generation metrics (BLEU/ROUGE/BERTScore).",
+      "metrics": {
+        "EM": 26.06, "F1": 62.71, "BLEU": 37.06,
+        "BERTScore": 0.77, "ROUGE1": 0.62, "ROUGE2": 0.53, "ROUGEL": 0.62
+      }
+    }
+  ],
+
+  "dew-logiq": [
+    {
+      "rank": 1,
+      "model": "o3-medium + FLOW-Map",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Best overall on DEW-LogiQ. Graph-RAG prompting strategy using DEW-KG concept maps. +5.68% over CoT baseline.",
+      "metrics": { "CoT": 82.70, "FLOW_Map": 87.40 }
+    },
+    {
+      "rank": 2,
+      "model": "Gemini 2.5 Pro + FLOW-Map",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Highest overall accuracy (85% OA) but highest overconfidence rate (14%). FLOW-Map gain: +3.35%.",
+      "metrics": { "CoT": 83.50, "FLOW_Map": 86.30 }
+    },
+    {
+      "rank": 3,
+      "model": "Claude Sonnet 4 + FLOW-Map",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Largest relative improvement from FLOW-Map (+11.52%). Best calibrated LRM (ECE=0.07).",
+      "metrics": { "CoT": 72.90, "FLOW_Map": 81.30 }
+    },
+    {
+      "rank": 4,
+      "model": "Qwen3-30B-A3B + FLOW-Map",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Open-weight model. FLOW-Map gain: +10.36%.",
+      "metrics": { "CoT": 67.60, "FLOW_Map": 74.60 }
+    }
+  ],
+
+  "dew-mathq": [
+    {
+      "rank": 1,
+      "model": "Gemini 2.5 Pro + FLOW-Eq",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Top accuracy on DEW-MathQ. +7.21% over CoT, +37.2% over ToT. Highest overconfidence rate (12.3%).",
+      "metrics": { "CoT": 90.20, "ToT": 70.50, "FLOW_Path": 90.20, "FLOW_Eq": 96.70 }
+    },
+    {
+      "rank": 2,
+      "model": "o3-medium + FLOW-Eq",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Lowest overconfidence rate (0.4%): safest choice for critical applications. +23.51% over CoT.",
+      "metrics": { "CoT": 77.00, "ToT": 77.00, "FLOW_Path": 88.50, "FLOW_Eq": 95.10 }
+    },
+    {
+      "rank": 3,
+      "model": "Claude Sonnet 4 + FLOW-Eq",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Most reliable on DEW-MathQ (CR=0.45). Convergence effect with Qwen3-30B at 83.60%. FLOW-Path hurts performance (−8.94%).",
+      "metrics": { "CoT": 73.80, "ToT": 70.50, "FLOW_Path": 67.20, "FLOW_Eq": 83.60 }
+    },
+    {
+      "rank": 4,
+      "model": "Qwen3-30B-A3B + FLOW-Eq",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111533",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Open-weight model. +21.34% over CoT with FLOW-Eq. Tied with Claude Sonnet 4 at 83.60%.",
+      "metrics": { "CoT": 68.90, "ToT": 70.50, "FLOW_Path": 75.40, "FLOW_Eq": 83.60 }
+    }
+  ],
+
+  "farmpro-q2s": [
+    {
+      "rank": 1,
+      "model": "GPT-4o",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111655",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Best overall on all three case types (CLI, BIO, PHY). Near-perfect on CLI (BLEU=91.78%). Largest gap over competitors on missing-data variations.",
+      "metrics": { "BERTScore": 0.45, "ROUGEL": 0.56, "BLEU": 54.66 }
+    },
+    {
+      "rank": 2,
+      "model": "LLaMA-3.3-70B",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111655",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Near-identical to GPT-4o on CLI (BLEU=92.68%) and PHY cases. Only ~1% behind GPT-4o on BLEU overall. Open-weight.",
+      "metrics": { "BERTScore": 0.37, "ROUGEL": 0.55, "BLEU": 53.59 }
+    },
+    {
+      "rank": 3,
+      "model": "DeepSeek-R1-Distill-LLaMA-70B",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111655",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "~12.65% BLEU gap behind GPT-4o. Competitive on BIO cases (BERTScore-F1=0.19 vs GPT-4o 0.07). Open-weight.",
+      "metrics": { "BERTScore": 0.31, "ROUGEL": 0.51, "BLEU": 42.01 }
+    }
+  ],
+
+  "farmpro-qa": [
+    {
+      "rank": 1,
+      "model": "GPT-4o",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111655",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Preferred by expert judges 74.7% of the time. +42.85% alignment advantage. Statistically significant difference (χ²=31.13, p<0.00001). Superior unit conversion (metric↔imperial).",
+      "metrics": { "Alignment": 88.61, "Effectiveness": 89.53, "EffScore": 2.69 }
+    },
+    {
+      "rank": 2,
+      "model": "DeepSeek-R1-Distill-LLaMA-70B",
+      "model_url": "https://doi.org/10.1016/j.compag.2026.111655",
+      "credibility": "peer-reviewed",
+      "verified": true,
+      "date": "2026",
+      "notes": "Preferred by experts 13.9% of the time; preferred when answers were concise yet comprehensive. Significant gap in completeness and clarity vs GPT-4o (t=9.17, p<0.00001).",
+      "metrics": { "Alignment": 62.03, "Effectiveness": 66.93, "EffScore": 2.01 }
+    }
+  ]
+}

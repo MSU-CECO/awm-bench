@@ -1,0 +1,36 @@
+
+image: node:20-alpine
+
+stages:
+  - build
+  - deploy
+
+variables:
+  VITE_BASE_PATH: "/${CI_PROJECT_NAME}/"
+
+cache:
+  key: "${CI_COMMIT_REF_SLUG}"
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+
+pages:
+  stage: deploy
+  dependencies:
+    - build
+  script:
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
