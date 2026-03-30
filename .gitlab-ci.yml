@@ -12,9 +12,8 @@ cache:
 
 build:
   stage: build
-  tags:
-    - nodejs
   script:
+    - node --version
     - npm ci
     - npm run build
   artifacts:
@@ -24,8 +23,6 @@ build:
 
 pages:
   stage: deploy
-  tags:
-    - nodejs
   dependencies:
     - build
   script:
