@@ -3,7 +3,7 @@
 A leaderboard for AI benchmarks in **Agricultural Water Management (AWM)**.
 
 **Live site:** https://dsiweb.cse.msu.edu/awm-bench/  
-**Repository:** https://gitlab.msu.edu/MSU-CECO/awm-bench
+**Public Repository:** https://github.com/MSU-CECO/awm-bench
 
 ---
 
